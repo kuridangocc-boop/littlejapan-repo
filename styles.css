@@ -1,0 +1,7 @@
+body { font-family: sans-serif; margin: 2em; background: #fafafa; color: #222; }
+header { text-align: center; }
+.product-card {
+  background: white; padding: 1em; margin: 1em; border-radius: 8px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+

@@ -1,0 +1,18 @@
+{
+  "name": "littlejapan",
+  "version": "1.0.0",
+  "description": "Little Japan - Japanese Teaching Tools Store",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.1657.0",
+    "body-parser": "^1.20.2",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "multer": "^1.4.5-lts.1",
+    "node-fetch": "^3.3.2",
+    "sqlite3": "^5.1.6"
+  }
+}

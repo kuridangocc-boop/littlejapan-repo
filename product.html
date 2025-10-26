@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Little Japan Product</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://www.paypal.com/sdk/js?client-id=YOUR_PAYPAL_CLIENT_ID&currency=USD"></script>
+</head>
+<body>
+  <div id="content"></div>
+  <div id="paypal-button-container"></div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const slug = params.get("slug");
+
+    fetch(`/api/products/${slug}`)
+      .then(r => r.json())
+      .then(p => {
+        document.getElementById("content").innerHTML = `
+          <h2>${p.title}</h2>
+          <p>${p.description}</p>
+          <p><b>Price:</b> $${(p.price_cents/100).toFixed(2)}</p>
+        `;
+
+        paypal.Buttons({
+          createOrder: (data, actions) => actions.order.create({
+            purchase_units: [{ amount: { value: (p.price_cents/100).toFixed(2) } }]
+          }),
+          onApprove: async (data, actions) => {
+            await actions.order.capture();
+            const resp = await fetch('/api/download', {
+              method: 'POST',
+              headers: {'Content-Type': 'application/json'},
+              body: JSON.stringify({ slug })
+            });
+            const { url } = await resp.json();
+            window.location = url;
+          }
+        }).render('#paypal-button-container');
+      });
+  </script>
+</body>
+</html>
