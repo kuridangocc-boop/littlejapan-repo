@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LittleJapan Member Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/dashboard.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to LittleJapan Members Area</h1>
+        <p>Here you can view Japanese teaching materials.</p>
+
+        <h2>Your Available Slides</h2>
+        <div id="slide-list">
+            <!-- Slide links will be dynamically loaded here -->
+        </div>
+
+        <div id="viewer-container" style="display:none;">
+            <h2>Slide Viewer</h2>
+            <div class="slide-viewer">
+                <iframe id="slide-frame" src="" frameborder="0"></iframe>
+            </div>
+            <button id="close-viewer">Close Viewer</button>
+        </div>
+    </div>
+</body>
+</html>
